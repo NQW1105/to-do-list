@@ -1,0 +1,128 @@
+@font-face {
+  font-family: 'roboto';
+  src: url('./Roboto-Light.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'roboto';
+}
+
+#header {
+  display: flex;  
+  align-items: center;
+  justify-content: space-between;
+  background-color: #db4c3f;
+  padding: 11px 21px;
+}
+
+#header > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;  
+}
+
+#header > div > svg,
+#header > div > h1 {
+  color: #fff;  
+  margin: 0; 
+}
+
+#header > div > svg:hover,
+#header > div > img:hover {
+  cursor: pointer; 
+}
+
+img[src="../src/company.png"] {
+  height: 38px;
+}
+
+img[src="../src/doggo.jpeg"] {
+  border-radius: 50%;  
+  height: 38px;
+}
+
+#main-body {
+  display: flex;
+  gap: 13vw;
+  padding: 21px 25px 0;
+}
+
+
+/* Left Tab Content */
+
+#left-body > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+#left-body > h3 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+}
+
+#left-body > button {
+  margin-top: 11px;
+}
+
+.projects {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  
+}
+
+.projects > p {
+  margin: 0;
+}
+
+
+/* Right Tab Content */
+
+#right-body {
+  flex: 1;
+}
+
+#right-body > button {
+  margin-top: 11px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.task > div {
+  flex: 1;
+}
+
+.task > div > .task-name > h4,
+.task > div > p {
+  margin: 0;
+}
+
+.task > div > p {
+  padding-top: 8px;
+}
+
+.radio-btn {
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.task-name {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.task-name > h5 {
+  color: red;
+  border: 1px solid red;
+  padding: 3px;
+  margin: 0;
+}
