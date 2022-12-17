@@ -49,12 +49,46 @@ img[src="../src/doggo.jpeg"] {
 }
 
 
+/* Task Form Content */
+#taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid #ccc;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 55;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.blur {
+  filter: blur(8px);
+}
+
+
 /* Left Tab Content */
 
-#left-body > div {
+.task-inbox {
   display: flex;
   align-items: center;
   gap: 7px;
+}
+
+#project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+#left-body {
+  width: 165px;
 }
 
 #left-body > h3 {
@@ -75,6 +109,10 @@ img[src="../src/doggo.jpeg"] {
 
 .projects > p {
   margin: 0;
+}
+
+.projects > input {
+  width: 120px;
 }
 
 
@@ -114,6 +152,18 @@ img[src="../src/doggo.jpeg"] {
   border: 2px solid;
 }
 
+.checked::before {
+  content: "✔";
+  position: relative;
+  top: -2px;
+}
+
+.cross-text {
+  text-decoration: line-through;
+}
+/* For strikethpugh texts */
+/* text-decoration: line-through; */
+
 .task-name {
   display: flex;
   align-items: center;
@@ -125,4 +175,86 @@ img[src="../src/doggo.jpeg"] {
   border: 1px solid red;
   padding: 3px;
   margin: 0;
+  cursor: pointer;
+}
+
+.task-name > h4,
+.task > div > p,
+.task > span {
+  cursor: pointer;
+}
+
+.title-nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+  /* min: 83px */
+  /* max: 686px */
+}
+
+.text-nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100px;
+  /* min: 175px */
+  /* max: 777px */
+}
+/* set the min and max value for width  */
+/* Refer CSS Functions page on TOP */
+
+.edit-task {
+  display: grid;
+  grid-template-columns: 25px 1fr 100px 30px 30px;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.edit-task > span[class='radio-btn'] {
+  grid-column-start: 1;
+  grid-row-start: span 2;
+}
+
+.edit-task > input[type='text'] {
+  grid-column-start: 2;
+  /* grid-column-end: 2; */
+  grid-row-start: 1;
+  /* grid-row-end: span 2; */
+}
+
+.edit-task > textarea {
+  grid-column-start: 2;
+  /* grid-column-end: 2; */
+  grid-row-start: 2;
+  /* grid-row-end: span 2; */
+}
+
+.edit-task > select {
+  grid-column-start: 3;
+  /* grid-column-end: 2; */
+  grid-row-start: 1;
+  /* grid-row-end: span 2; */
+}
+
+.edit-task > input[placeholder='YYYY/MM/DD'] {
+  grid-column-start: 3;
+  /* grid-column-end: 2; */
+  grid-row-start: 2;
+  /* grid-row-end: span 2; */
+}
+
+.edit-task > button[value='✔'] {
+  grid-column-start: 4;
+  /* grid-column-end: 2; */
+  grid-row-start: span 2;
+  /* grid-row-end: span 2; */
+}
+
+.edit-task > button[value='✖'] {
+  grid-column-start: 5;
+  /* grid-column-end: 2; */
+  grid-row-start: span 2;
+  /* grid-row-end: span 2; */
 }

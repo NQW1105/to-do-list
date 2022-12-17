@@ -1,10 +1,10 @@
 import './style.css';
+import { openProjectForm } from './project';
+import { openTaskForm, closeTaskForm, createTask, formValue } from './task';
 
 // https://www.youtube.com/watch?v=8ZKq0r-g87M
 
 // todo-items must have following properties: title, description, duedate, priority
-// Event for create new project
-// Event for delete project
 // Event for create task
 // Event for edit task
 // Event for delete task
@@ -25,18 +25,33 @@ function Task(title, description, dueDate, priority) {
   this.priority = priority;  
 }
 
-function createProject(title) {
-  const newProject = document.createElement("div");
-  const projectTitle = document.createElement("p");
-  const removeBtn = document.createElement("button");
 
-  newProject.setAttribute('class', 'projects');
-  projectTitle.textContent = title;
-  removeBtn = "✖";
-
-  newProject.appendChild(projectTitle);
-  newProject.appendChild(removeBtn);
-}
-
+// index.js; Main interface to other js modules
 const projectBtn = document.querySelector('#left-body > button');
-projectBtn.addEventListener('click', projectForm());
+projectBtn.addEventListener("click", () => {
+  openProjectForm();
+});
+
+
+const mainBody = document.querySelector('#main-body');
+const taskForm = document.querySelector('#taskForm');
+const cancelBtn = document.querySelector('#taskForm > div > button[value="Cancel"]');
+const taskList = document.querySelector('#task-list');
+
+const taskBtn = document.querySelector('#right-body > button');
+taskBtn.addEventListener("click", () => {
+  openTaskForm(mainBody, taskForm);
+});
+
+cancelBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  closeTaskForm(mainBody, taskForm);
+})
+
+taskForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  createTask(taskList, formValue(e));
+  taskForm.reset();
+  closeTaskForm(mainBody, taskForm);
+})
+

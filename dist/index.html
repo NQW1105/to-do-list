@@ -19,72 +19,96 @@
     </div>
     <div id="main-body">
       <div id="left-body">
-        <!-- Inbox -->
-        <div>
+
+        <div class="task-inbox">
           <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M19,15H15A3,3 0 0,1 12,18A3,3 0 0,1 9,15H5V5H19M19,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
           </svg>
           <h3>Inbox</h3>
-          <!-- Optional: Task Counter -->
         </div>
         
-        <!-- Today -->
-        <div>
+        <div class="task-inbox">
           <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1" />
           </svg>
           <h3>Today</h3>
-          <!-- Optional: Task Counter -->
-
         </div>
         
-        <!-- Next 7 days -->
-        <div>
+        <div class="task-inbox">
           <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M15,13H16.5V15.82L18.94,17.23L18.19,18.53L15,16.69V13M19,8H5V19H9.67C9.24,18.09 9,17.07 9,16A7,7 0 0,1 16,9C17.07,9 18.09,9.24 19,9.67V8M5,21C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3H6V1H8V3H16V1H18V3H19A2,2 0 0,1 21,5V11.1C22.24,12.36 23,14.09 23,16A7,7 0 0,1 16,23C14.09,23 12.36,22.24 11.1,21H5M16,11.15A4.85,4.85 0 0,0 11.15,16C11.15,18.68 13.32,20.85 16,20.85A4.85,4.85 0 0,0 20.85,16C20.85,13.32 18.68,11.15 16,11.15Z" />
           </svg>
           <h3>Next 7 Days</h3>
-          <!-- Optional: Task Counter -->
-
         </div>
         
         <h3>Projects</h3>
-        <div id="project-list">
-          <div class="projects">
-            <p>Odin Projects</p>
-            <button>✖</button>
-          </div>
-        </div>
+        <div id="project-list"></div>
         <button>+ Project</button>
+
       </div>
       
       <div id="right-body">
-        <h2>Today</h2>
-        <!-- Title above should change when inbox, today, project title selected -->
-        
+
+        <h2>Today</h2>    
+
         <div id="task-list">
-          <div class="task">
-            <span class="radio-btn">✔</span>
+
+          <!-- <div class="task">
+            <span class="radio-btn"></span>
             <div>
               <div class="task-name">
                 <h4>Create to do list webpage</h4>
                 <h5>High-Priority</h5>
               </div>  
-              <!-- Make description fill 1 line only. Else, overflow with ... -->
               <p>Part of odin project assignment; Full stack JS path</p>
-            </div>  
-                        
+            </div>          
             <span>11/12/2022</span>
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
               <path fill="currentColor" d="M5,3C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19H5V5H12V3H5M17.78,4C17.61,4 17.43,4.07 17.3,4.2L16.08,5.41L18.58,7.91L19.8,6.7C20.06,6.44 20.06,6 19.8,5.75L18.25,4.2C18.12,4.07 17.95,4 17.78,4M15.37,6.12L8,13.5V16H10.5L17.87,8.62L15.37,6.12Z" />
             </svg>
             <button>✖</button>
           </div>  
+          <form class="edit-task">
+            <span class="radio-btn"></span>
+            <input type="text"></input>
+            <select>
+              <option>Low-Priority</option>
+              <option>Med-Priority</option>
+              <option>High-Priority</option>
+            </select>
+            <textarea></textarea>      
+            <input placeholder="YYYY/MM/DD" pattern="([12]\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01]))">
+            <button value="✔">✔</button>
+            <button value="✖">✖</button>
+          </form>   -->
+
         </div>  
 
         <button>+ Task</button>
-      </div>      
+
+      </div>  
     </div>
+
+    <form id="taskForm" class="hidden" action="example.com/" method="post">
+      <label for="taskTitle">Task :</label>
+      <input type="text" id="taskTitle" required>
+      <label for="taskDescription">Description :</label>
+      <textarea id="taskDescription"></textarea>
+      <div>
+        <label for="dueDate">Due date :</label>
+        <input id="dueDate" placeholder="YYYY/MM/DD" pattern="([12]\d{3}/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01]))">
+        <label for="priority">Priority :</label>
+        <select id="priority">
+          <option>Low-Priority</option>
+          <option>Med-Priority</option>
+          <option>High-Priority</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+        <button value="Cancel">Cancel</button>
+      </div>
+    </form>
 
     <!-- <script src="main.js"></script> -->
   </body>
