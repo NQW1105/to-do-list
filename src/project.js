@@ -1,3 +1,5 @@
+import { displayProjectTask } from './index';
+
 function createProject(title) {
   const newProject = document.createElement("div");
   const projectTitle = document.createElement("p");
@@ -7,9 +9,15 @@ function createProject(title) {
   projectTitle.textContent = title;
   removeBtn.textContent = "✖";
   
+  projectTitle.addEventListener('click', (e) => {
+    // console.log(e);
+    displayProjectTask(e);
+  });
+
   removeBtn.addEventListener('click', (e) => {
     removeProject(e);
-  })
+    removeProjectDB(e);
+  });
 
   newProject.appendChild(projectTitle);
   newProject.appendChild(removeBtn);
@@ -18,17 +26,56 @@ function createProject(title) {
 }
 
 function removeProject(event) {
+  // console.log(event);
+  // const title = event.target.previousSibling.textContent;
+  // const dropDown = document.querySelector('#project');
+  // const unwantedDOM = dropDown.querySelector(`option[value=${title}]`); 
+  // console.log(unwantedDOM);
+
   const unwantedProject = event.target.parentElement;
   const projectContainer = unwantedProject.parentElement;
-  
-  return projectContainer.removeChild(unwantedProject);
+  projectContainer.removeChild(unwantedProject);
+
+  return;
 }
 
-function updateProjectDB(database, newProject) {
-  return database.appendChild(newProject);
+function updateProjectNum() {
+  if (localStorage.getItem('projNum') == null) {
+    localStorage.setItem('projNum', '1');
+  } else {
+    let projectNum = parseInt(localStorage.getItem('projNum'));
+    projectNum += 1;
+    localStorage.setItem('projNum', projectNum);
+  }
+} 
+
+function updateProjectDB(newProject) {
+  let projectNum = localStorage.getItem('projNum');
+  let currentProjectList = JSON.parse(localStorage.getItem('projects'));
+  if (currentProjectList == null) { 
+    let projectObj = {};
+    projectObj[projectNum] = newProject;
+    localStorage.setItem('projects', JSON.stringify(projectObj));
+  } else {
+    currentProjectList[projectNum] = newProject;
+    localStorage.setItem('projects', JSON.stringify(currentProjectList));
+  }
 }
 
-function openProjectForm(database) {
+function removeProjectDB(event) {
+  // console.log(event);
+  const project2Remove = event.target.previousElementSibling.innerText;
+  // console.log(project2Remove);
+  let currentProjectList = JSON.parse(localStorage.getItem('projects'));
+  // console.log(currentProjectList);
+  const objIndex2Remove = Object.keys(currentProjectList).find(key => currentProjectList[key] === project2Remove);
+  // console.log(test);
+  delete(currentProjectList[objIndex2Remove]);
+  // console.log(currentProjectList);
+  localStorage.setItem('projects', JSON.stringify(currentProjectList));
+}
+
+function openProjectForm() {
   const form = document.createElement("form");
   const inputField = document.createElement("input");
   const closeBtn = document.createElement("button");
@@ -54,13 +101,14 @@ function openProjectForm(database) {
       const newProjectTitle = document.querySelector('input[placeholder="New Project..."]').value;
       const nodeParent = document.querySelector('#project-list');
       nodeParent.appendChild(createProject(newProjectTitle));
-      // updateProjectDB(database, newProjectTitle);
+      updateProjectNum();
+      updateProjectDB(newProjectTitle);
     }
   })
   
   return nodeParent.appendChild(form);
 }
 
-export { openProjectForm }
+export { openProjectForm, createProject }
 
 // Future Work: Only allow 1 form to pop up

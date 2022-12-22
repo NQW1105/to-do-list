@@ -20,7 +20,7 @@
     <div id="main-body">
       <div id="left-body">
 
-        <div class="task-inbox">
+        <div class="task-inbox" id="inbox">
           <svg style="width:24px;height:24px" viewBox="0 0 24 24">
             <path fill="currentColor" d="M19,15H15A3,3 0 0,1 12,18A3,3 0 0,1 9,15H5V5H19M19,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
           </svg>
@@ -104,6 +104,11 @@
           <option>High-Priority</option>
         </select>
       </div>
+      <label for="project">Project : 
+        <select id="project">
+          <option>NOT PROJECT</option>
+        </select>
+      </label>
       <div>
         <button type="submit">Submit</button>
         <button value="Cancel">Cancel</button>
